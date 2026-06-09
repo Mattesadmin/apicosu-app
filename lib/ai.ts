@@ -130,6 +130,7 @@ if (text) {
 
   } catch (err) {
     console.error("Claude Fehler:", err);
+    throw err;
   }
 
   // 2️⃣ Fallback: GPT‑4.1
@@ -152,6 +153,7 @@ if (text) {
     };
   } catch (err) {
     console.error("OpenAI Fehler:", err);
+    throw err;
   }
 
   // 3️⃣ Falls beide Modelle ausfallen
