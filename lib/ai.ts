@@ -115,7 +115,12 @@ export async function analyzeWithAI(errorText: string) {
       ],
     });
 
-    const text = claudeRes.content[0]?.text;
+const textBlock = claudeRes.content.find(
+  (block: any) => block.type === "text"
+);
+
+const text = textBlock?.text || "";
+
 if (text) {
   return {
     model: "Claude 3.5 Sonnet",
