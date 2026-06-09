@@ -116,12 +116,13 @@ export async function analyzeWithAI(errorText: string) {
     });
 
     const text = claudeRes.content[0]?.text;
-    if (text) {
-      return {
-        model: "Claude 3.5 Sonnet",
-        output: text,
-      };
-    }
+if (text) {
+  return {
+    model: "Claude 3.5 Sonnet",
+    output: text,
+  };
+}
+
   } catch (err) {
     console.error("Claude Fehler:", err);
   }
