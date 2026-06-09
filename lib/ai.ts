@@ -117,7 +117,7 @@ export async function analyzeWithAI(errorText: string) {
 
 const textBlock = claudeRes.content.find(
   (block: any) => block.type === "text"
-);
+) as { type: "text"; text: string } | undefined;
 
 const text = textBlock?.text || "";
 
