@@ -1,0 +1,11 @@
+:root {
+  --bg: #f7f7f8;
+  --panel: #ffffff;
+  --text: #111111;
+  --text-soft: #555555;
+  --border: #e5e5e5;
+  --accent: #0070f3;
+  --accent-hover: #0059c9;
+  --radius: 12px;
+  --shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
