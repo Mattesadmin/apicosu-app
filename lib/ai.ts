@@ -9,7 +9,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY!,
 });
 
-// SAP-optimierter Prompt
+// SAP-optimierter Mega-Prompt
 const buildPrompt = (input: string) => `
 Du bist ein Senior-SAP-Experte für Basis, ABAP, Customizing, Transportwesen, Datenmodellierung und Dokumentation.
 Du arbeitest als intelligenter Analyse- und Generierungsassistent für die APICOSU-Suite.
@@ -98,52 +98,17 @@ INPUT:
 ${input}
 `;
 
-export async function analyzeWithAI(errorText: string) {
-  const prompt = buildPrompt(errorText);
+export async function analyzeWithAI(input: string) {
+  const prompt = buildPrompt(input);
 
-  // 1️⃣ Versuch: Claude 3.5 Sonnet
-  try {
-    const claudeRes = await anthropic.messages.create({
-      model: "claude-3-5-sonnet-latest",
-      max_tokens: 1200,
-      temperature: 0.2,
-      messages: [
-        {
-          role: "user",
-          content: prompt,
-        },
-      ],
-    });
-
-const textBlock = claudeRes.content.find(
-  (block: any) => block.type === "text"
-) as { type: "text"; text: string } | undefined;
-
-const text = textBlock?.text || "";
-
-if (text) {
-  return {
-    model: "Claude 3.5 Sonnet",
-    output: text,
-  };
-}
-
-  } catch (err) {
-    console.error("Claude Fehler:", err);
-    throw err;
-  }
-
-  // 2️⃣ Fallback: GPT‑4.1
+  // 1️⃣ GPT zuerst (günstig, schnell, professionell)
   try {
     const gptRes = await openai.chat.completions.create({
       model: "gpt-4.1",
       temperature: 0.2,
       max_tokens: 1200,
       messages: [
-        {
-          role: "user",
-          content: prompt,
-        },
+        { role: "user", content: prompt },
       ],
     });
 
@@ -153,7 +118,29 @@ if (text) {
     };
   } catch (err) {
     console.error("OpenAI Fehler:", err);
-    throw err;
+  }
+
+  // 2️⃣ Claude als Fallback (Premium-Qualität)
+  try {
+    const claudeRes = await anthropic.messages.create({
+      model: "claude-3-5-sonnet-latest",
+      max_tokens: 1200,
+      temperature: 0.2,
+      messages: [
+        { role: "user", content: prompt },
+      ],
+    });
+
+    const textBlock = claudeRes.content.find(
+      (block: any) => block.type === "text"
+    );
+
+    return {
+      model: "Claude 3.5 Sonnet",
+      output: textBlock?.text || "",
+    };
+  } catch (err) {
+    console.error("Claude Fehler:", err);
   }
 
   // 3️⃣ Falls beide Modelle ausfallen
