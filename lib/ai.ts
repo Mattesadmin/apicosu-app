@@ -135,11 +135,16 @@ export async function analyzeWithAI(input: string) {
       (block: any) => block.type === "text"
     );
     
-    const output = typeof textBlock?.text === "string" ? textBlock.text : "";
+    let output = "";
+
+    if (textBlock && textBlock.type === "text") {
+    // Jetzt weiß TS sicher, dass .text existiert
+    output = textBlock.text;
+    }
 
     return {
       model: "Claude 3.5 Sonnet",
-      output: textBlock?.text || "",
+      output,
     };
   } catch (err) {
     console.error("Claude Fehler:", err);
