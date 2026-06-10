@@ -1,3 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root Theme */
+:root {
+  --bg: #0d1117;
+  --bg-panel: #161b22;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #e6edf3;
+  --text-secondary: #8b949e;
+  --accent: #0a6ed1;
+  --accent-hover: #0d7ff0;
+  --radius: 12px;
+}
+
+/* Body */
 html, body {
   margin: 0;
   padding: 0;
@@ -6,46 +23,21 @@ html, body {
   font-family: Inter, sans-serif;
 }
 
+/* Premium Panel */
 .panel {
-  background: var(--panel);
-  border-radius: var(--radius);
-  padding: 20px;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-}
-
-button {
-  padding: 12px 24px;
-  background: var(--accent);
-  color: white;
-  border: none;
-  border-radius: var(--radius);
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button:hover {
-  background: var(--accent-hover);
-}
-
-/* ⭐ Standard Panel */
-.panel {
-  background: var(--panel);
+  background: var(--bg-panel);
   border-radius: var(--radius);
   padding: 24px;
   border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
 }
 
-/* ⭐ Standard Button */
+/* Premium Button */
 .btn {
   padding: 12px 20px;
   background: var(--accent);
   color: white;
-  border: none;
   border-radius: var(--radius);
-  cursor: pointer;
   font-size: 16px;
   transition: 0.2s;
 }
@@ -54,35 +46,42 @@ button:hover {
   background: var(--accent-hover);
 }
 
-/* ⭐ Container für Module */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* ⭐ Überschriften */
-h1, h2, h3 {
-  color: var(--text);
-  margin-bottom: 16px;
-}
-
-/* ⭐ Drag & Drop Upload Box */
-.upload-box {
-  border: 2px dashed var(--border);
+/* Input */
+input, textarea {
+  background: #0f141a;
+  border: 1px solid var(--border);
+  padding: 12px;
   border-radius: var(--radius);
-  padding: 40px;
-  text-align: center;
-  cursor: pointer;
+  width: 100%;
+  color: var(--text);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(10,110,209,0.3);
+}
+
+/* Module Grid */
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+/* Module Card */
+.module-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
   transition: 0.2s;
-  background: var(--panel);
+  cursor: pointer;
 }
 
-.upload-box:hover {
+.module-card:hover {
+  transform: translateY(-4px);
   border-color: var(--accent);
-  background: var(--panel-hover);
-}
-
-.upload-box.dragover {
-  border-color: var(--accent);
-  background: var(--accent-light);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.45);
 }

@@ -18,10 +18,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         model: result.model,
-        output: result.output,
+        const cleanOutput = result.output
+          .replace(/\\n/g, "\n")
+          .replace(/\r\n/g, "\n");
+
+    return NextResponse.json(
+      {
+        model: result.model,
+        output: cleanOutput,
       },
       { status: 200 }
-    );
+);
   } catch (error) {
     console.error("Error-Finder API Fehler:", error);
     return NextResponse.json(
