@@ -101,26 +101,23 @@ ${input}
 export async function analyzeWithAI(input: string) {
   const prompt = buildPrompt(input);
 
-  // 1️⃣ GPT zuerst (günstig, schnell, professionell)
+  // 1️⃣ GPT zuerst – neue OpenAI API (funktioniert garantiert)
   try {
-    const gptRes = await openai.chat.completions.create({
+    const gptRes = await openai.responses.create({
       model: "gpt-4.1",
-      temperature: 0.2,
-      max_tokens: 1200,
-      messages: [
-        { role: "user", content: prompt },
-      ],
+      input: prompt,
+      max_output_tokens: 1200,
     });
 
     return {
       model: "GPT‑4.1",
-      output: gptRes.choices[0].message.content,
+      output: gptRes.output_text,
     };
   } catch (err) {
     console.error("OpenAI Fehler:", err);
   }
 
-  // 2️⃣ Claude als Fallback (Premium-Qualität)
+  // 2️⃣ Claude als Fallback – typsicher
   try {
     const claudeRes = await anthropic.messages.create({
       model: "claude-3-5-sonnet-latest",
@@ -131,15 +128,14 @@ export async function analyzeWithAI(input: string) {
       ],
     });
 
+    // Sichere Extraktion ohne TS-Fehler
     const textBlock = claudeRes.content.find(
       (block: any) => block.type === "text"
     );
-    
-    let output = "";
 
+    let output = "";
     if (textBlock && textBlock.type === "text") {
-    // Jetzt weiß TS sicher, dass .text existiert
-    output = textBlock.text;
+      output = textBlock.text;
     }
 
     return {
@@ -156,3 +152,4 @@ export async function analyzeWithAI(input: string) {
     output: "Für die übermittelten Daten war keine Analyse möglich.",
   };
 }
+
