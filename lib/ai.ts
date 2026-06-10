@@ -134,6 +134,8 @@ export async function analyzeWithAI(input: string) {
     const textBlock = claudeRes.content.find(
       (block: any) => block.type === "text"
     );
+    
+    const output = typeof textBlock?.text === "string" ? textBlock.text : "";
 
     return {
       model: "Claude 3.5 Sonnet",
