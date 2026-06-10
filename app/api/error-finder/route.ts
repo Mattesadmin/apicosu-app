@@ -15,20 +15,18 @@ export async function POST(req: NextRequest) {
 
     const result = await analyzeWithAI(text);
 
-    return NextResponse.json(
-      {
-        model: result.model,
-        const cleanOutput = result.output
-          .replace(/\\n/g, "\n")
-          .replace(/\r\n/g, "\n");
+    // ✅ cleanOutput MUSS HIER stehen – vor dem return
+    const cleanOutput = result.output
+      .replace(/\\n/g, "\n")
+      .replace(/\r\n/g, "\n");
 
     return NextResponse.json(
       {
         model: result.model,
-        output: cleanOutput,
+        output: cleanOutput, // ✅ sauber
       },
       { status: 200 }
-);
+    );
   } catch (error) {
     console.error("Error-Finder API Fehler:", error);
     return NextResponse.json(
@@ -37,3 +35,4 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
