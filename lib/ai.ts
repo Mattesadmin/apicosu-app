@@ -101,26 +101,13 @@ ${input}
 export async function analyzeWithAI(input: string) {
   const prompt = buildPrompt(input);
 
-  // 1️⃣ GPT zuerst – neue OpenAI API (funktioniert garantiert)
-try {
-  console.log("GPT wird aufgerufen...");
-
-  const gptRes = await openai.responses.create({
-    model: "gpt-4.1",
-    input: prompt,
-    max_output_tokens: 1200,
-  });
-
-  console.log("GPT Antwort:", gptRes);
-
-  return {
-    model: "GPT‑4.1",
-    output: gptRes.output_text,
-  };
-} catch (err) {
-  console.error("OpenAI Fehler:", err);
-}
-
+  // 1️⃣ GPT zuerst – neue OpenAI Responses API
+  try {
+    const gptRes = await openai.responses.create({
+      model: "gpt-4.1",
+      input: prompt,
+      max_output_tokens: 1200,
+    });
 
     return {
       model: "GPT‑4.1",
@@ -141,7 +128,6 @@ try {
       ],
     });
 
-    // Sichere Extraktion ohne TS-Fehler
     const textBlock = claudeRes.content.find(
       (block: any) => block.type === "text"
     );
@@ -165,4 +151,3 @@ try {
     output: "Für die übermittelten Daten war keine Analyse möglich.",
   };
 }
-
