@@ -15,7 +15,6 @@ export async function POST(req: NextRequest) {
 
     const result = await analyzeWithAI(text);
 
-    // ✅ cleanOutput MUSS HIER stehen – vor dem return
     const cleanOutput = result.output
       .replace(/\\n/g, "\n")
       .replace(/\r\n/g, "\n");
@@ -23,7 +22,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         model: result.model,
-        output: cleanOutput, // ✅ sauber
+        output: cleanOutput,
       },
       { status: 200 }
     );
