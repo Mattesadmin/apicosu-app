@@ -1,9 +1,13 @@
-export function Button({ children, onClick }) {
+import { ReactNode } from "react";
+
+interface ButtonProps {
+  children: ReactNode;
+  onClick?: () => void;
+}
+
+export function Button({ children, onClick }: ButtonProps) {
   return (
-    <button
-      onClick={onClick}
-      className="btn"
-    >
+    <button onClick={onClick} className="btn">
       {children}
     </button>
   );
