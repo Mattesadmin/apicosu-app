@@ -1,52 +1,78 @@
 "use client";
 
 import Link from "next/link";
+import { ModuleCard } from "@/app/components/ModuleCard";
 
 export default function HomePage() {
-  const modules = [
-    {
-      name: "Error Finder",
-      path: "/error-finder",
-    },
-    {
-      name: "Customizing Analyzer",
-      path: "/customizing-analyzer",
-    },
-    {
-      name: "Transport Impact Analyzer",
-      path: "/transport-impact-analyzer",
-    },
-    {
-      name: "Blueprint Generator",
-      path: "/blueprint-generator",
-    },
-    {
-      name: "Testdaten Generator",
-      path: "/testdaten-generator",
-    },
-    {
-      name: "Training Generator",
-      path: "/training-generator",
-    },
-  ];
-
   return (
-    <main className="mx-auto max-w-[1400px] px-6 py-12">
-      <h1 className="text-4xl font-semibold mb-8">APICOSU Module</h1>
-      <p className="text-gray-600 mb-10">
-        Wähle ein Modul aus, um eine Analyse zu starten.
-      </p>
+    <div className="max-w-[1400px] mx-auto px-6 py-16 space-y-16">
 
-      <div className="grid grid-cols-3 gap-6">
-        {modules.map((m) => (
-          <Link key={m.name} href={m.path}>
-            <div className="border rounded-lg p-6 shadow-sm hover:shadow-md hover:border-blue-500 transition cursor-pointer">
-              <h2 className="text-xl font-medium mb-2">{m.name}</h2>
-              <p className="text-sm text-gray-500">Modul öffnen</p>
-            </div>
+      {/* HEADER */}
+      <header className="space-y-4">
+        <h1 className="text-4xl font-bold text-white">
+          APICOSU – AI‑Powered Consulting Suite
+        </h1>
+        <p className="text-gray-400 text-lg max-w-2xl">
+          Die Premium‑Werkzeuge für SAP‑Berater: Fehler analysieren, 
+          Customizing bewerten, Transporte prüfen, Blueprints erzeugen, 
+          Testdaten generieren und Trainingsunterlagen erstellen.
+        </p>
+      </header>
+
+      {/* MODULE GRID */}
+      <section>
+        <h2 className="text-2xl font-semibold text-white mb-6">
+          Module
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <Link href="/error-finder">
+            <ModuleCard
+              title="Error Finder"
+              description="Analysiert ST22‑Dumps, SM21‑Logs, Fehlermeldungen und Screenshots."
+            />
           </Link>
-        ))}
-      </div>
-    </main>
+
+          <Link href="/customizing-analyzer">
+            <ModuleCard
+              title="Customizing Analyzer"
+              description="Bewertet Customizing‑Einstellungen, Tabellen und IMG‑Pfade."
+            />
+          </Link>
+
+          <Link href="/transport-impact-analyzer">
+            <ModuleCard
+              title="Transport Impact Analyzer"
+              description="Schätzt Auswirkungen von Transporten und Objekten ein."
+            />
+          </Link>
+
+          <Link href="/blueprint-generator">
+            <ModuleCard
+              title="Blueprint Generator"
+              description="Erzeugt strukturierte Blueprints aus Prozess‑ oder Anforderungsbeschreibungen."
+            />
+          </Link>
+
+          <Link href="/testdaten-generator">
+            <ModuleCard
+              title="Testdaten Generator"
+              description="Generiert passende Testdaten für Szenarien und Tabellen."
+            />
+          </Link>
+
+          <Link href="/training-generator">
+            <ModuleCard
+              title="Training Generator"
+              description="Erstellt Trainingsunterlagen, Agenden und Lerninhalte."
+            />
+          </Link>
+
+        </div>
+      </section>
+    </div>
   );
 }
+
+

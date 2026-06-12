@@ -3,30 +3,38 @@ import { analyzeWithAI } from "@/lib/ai";
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
+    const { text, fileName, fileBase64 } = await req.json();
 
-    const text: string | undefined = body?.text;
-    if (!text || text.trim().length === 0) {
+    if (!text && !fileBase64) {
       return NextResponse.json(
-        { error: "Kein Text für die Customizing-Analyse übergeben." },
+        { error: "Bitte Text oder Datei übergeben." },
         { status: 400 }
       );
     }
 
-    const result = await analyzeWithAI(text);
+    let finalInput = "";
+
+    if (text) {
+      finalInput += `CUSTOMIZING TEXT:\n${text}\n\n`;
+    }
+
+    if (fileBase64) {
+      finalInput += `DATEI (${fileName}):\nBase64-Daten empfangen.\n\n`;
+    }
+
+    const result = await analyzeWithAI(finalInput);
 
     return NextResponse.json(
-      {
-        model: result.model,
-        output: result.output,
-      },
+      { output: result.output },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Customizing Analyzer API Fehler:", error);
+  } catch (err) {
+    console.error("Customizing Analyzer API Fehler:", err);
     return NextResponse.json(
-      { error: "Interner Fehler in der Customizing-Analyzer-API." },
+      { error: "Interner Fehler in der Customizing Analyzer API." },
       { status: 500 }
     );
   }
 }
+
+

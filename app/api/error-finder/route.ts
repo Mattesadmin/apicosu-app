@@ -3,33 +3,35 @@ import { analyzeWithAI } from "@/lib/ai";
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
+    const { text, fileName, fileBase64 } = await req.json();
 
-    const text: string | undefined = body?.text;
-    if (!text || text.trim().length === 0) {
+    if (!text && !fileBase64) {
       return NextResponse.json(
-        { error: "Kein Text für die Analyse übergeben." },
+        { error: "Bitte Text oder Datei übergeben." },
         { status: 400 }
       );
     }
 
-    const result = await analyzeWithAI(text);
+    let finalInput = "";
 
-    const cleanOutput = result.output
-      .replace(/\\n/g, "\n")
-      .replace(/\r\n/g, "\n");
+    if (text) {
+      finalInput += `TEXT-EINGABE:\n${text}\n\n`;
+    }
+
+    if (fileBase64) {
+      finalInput += `DATEI (${fileName}):\nBase64-Daten empfangen.\n\n`;
+    }
+
+    const result = await analyzeWithAI(finalInput);
 
     return NextResponse.json(
-      {
-        model: result.model,
-        output: cleanOutput,
-      },
+      { output: result.output },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Error-Finder API Fehler:", error);
+  } catch (err) {
+    console.error("Error Finder API Fehler:", err);
     return NextResponse.json(
-      { error: "Interner Fehler in der Error-Finder-API." },
+      { error: "Interner Fehler in der Error Finder API." },
       { status: 500 }
     );
   }
