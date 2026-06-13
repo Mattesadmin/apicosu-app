@@ -1,76 +1,91 @@
 "use client";
 
-import Link from "next/link";
 import { ModuleCard } from "@/app/components/ModuleCard";
+import {
+  BoltIcon,
+  WrenchScrewdriverIcon,
+  TruckIcon,
+  DocumentDuplicateIcon,
+  BeakerIcon,
+  BookOpenIcon
+} from "@heroicons/react/24/outline";
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <div className="max-w-[1400px] mx-auto px-6 py-16 space-y-16">
+    <div className="min-h-screen bg-black text-white px-6 py-16">
+      <div className="max-w-6xl mx-auto">
 
-      {/* HEADER */}
-      <header className="space-y-4">
-        <h1 className="text-4xl font-bold text-white">
-          APICOSU – AI‑Powered Consulting Suite
+        {/* HEADER */}
+        <h1 className="text-4xl font-bold mb-4">
+          APICOSU – AI‑powered SAP Tools
         </h1>
-        <p className="text-gray-400 text-lg max-w-2xl">
-          Die Premium‑Werkzeuge für SAP‑Berater: Fehler analysieren, 
-          Customizing bewerten, Transporte prüfen, Blueprints erzeugen, 
-          Testdaten generieren und Trainingsunterlagen erstellen.
+        <p className="text-gray-400 mb-12">
+          Wähle ein Modul aus, um deine Analyse zu starten.
         </p>
-      </header>
 
-      {/* MODULE GRID */}
-      <section>
-        <h2 className="text-2xl font-semibold text-white mb-6">
-          Module
-        </h2>
+        {/* BENTO GRID */}
+        <div
+          className="
+            grid
+            grid-cols-1
+            md:grid-cols-3
+            gap-6
+            auto-rows-[200px]
+          "
+        >
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-          <Link href="/error-finder">
+          {/* GROSSE KARTE */}
+          <div className="md:col-span-2 md:row-span-2">
             <ModuleCard
               title="Error Finder"
-              description="Analysiert ST22‑Dumps, SM21‑Logs, Fehlermeldungen und Screenshots."
+              description="Analysiert SAP Logs, Dumps und Fehlermeldungen automatisch."
+              icon={<BoltIcon className="w-10 h-10" />}
+              href="/error-finder"
             />
-          </Link>
+          </div>
 
-          <Link href="/customizing-analyzer">
-            <ModuleCard
-              title="Customizing Analyzer"
-              description="Bewertet Customizing‑Einstellungen, Tabellen und IMG‑Pfade."
-            />
-          </Link>
+          {/* MITTLERE KARTEN */}
+          <ModuleCard
+            title="Customizing Analyzer"
+            description="Analysiert Customizing‑Einstellungen und erkennt Konflikte."
+            icon={<WrenchScrewdriverIcon className="w-10 h-10" />}
+            href="/customizing-analyzer"
+          />
 
-          <Link href="/transport-impact-analyzer">
-            <ModuleCard
-              title="Transport Impact Analyzer"
-              description="Schätzt Auswirkungen von Transporten und Objekten ein."
-            />
-          </Link>
+          <ModuleCard
+            title="Transport Impact Analyzer"
+            description="Ermittelt Auswirkungen von Transporten auf Systeme & Prozesse."
+            icon={<TruckIcon className="w-10 h-10" />}
+            href="/transport-impact-analyzer"
+          />
 
-          <Link href="/blueprint-generator">
+          {/* BREITE KARTE */}
+          <div className="md:col-span-3">
             <ModuleCard
               title="Blueprint Generator"
-              description="Erzeugt strukturierte Blueprints aus Prozess‑ oder Anforderungsbeschreibungen."
+              description="Erstellt automatisch technische Blueprints aus deinen Eingaben."
+              icon={<DocumentDuplicateIcon className="w-10 h-10" />}
+              href="/blueprint-generator"
             />
-          </Link>
+          </div>
 
-          <Link href="/testdaten-generator">
-            <ModuleCard
-              title="Testdaten Generator"
-              description="Generiert passende Testdaten für Szenarien und Tabellen."
-            />
-          </Link>
+          {/* KLEINE KARTEN */}
+          <ModuleCard
+            title="Testdaten Generator"
+            description="Generiert realistische Testdaten für SAP‑Prozesse."
+            icon={<BeakerIcon className="w-10 h-10" />}
+            href="/testdaten-generator"
+          />
 
-          <Link href="/training-generator">
-            <ModuleCard
-              title="Training Generator"
-              description="Erstellt Trainingsunterlagen, Agenden und Lerninhalte."
-            />
-          </Link>
+          <ModuleCard
+            title="Training Generator"
+            description="Erstellt Schulungsunterlagen aus deinen SAP‑Screenshots."
+            icon={<BookOpenIcon className="w-10 h-10" />}
+            href="/training-generator"
+          />
 
         </div>
-      </section>
+      </div>
     </div>
   );
 }
