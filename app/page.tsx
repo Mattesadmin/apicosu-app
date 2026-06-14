@@ -2,13 +2,13 @@
 
 import { ModuleCard } from "@/app/components/ModuleCard";
 import {
-  BoltIcon,
-  WrenchScrewdriverIcon,
-  TruckIcon,
-  DocumentDuplicateIcon,
-  BeakerIcon,
-  BookOpenIcon
-} from "@heroicons/react/24/outline";
+  AlertTriangle,
+  Settings,
+  Truck,
+  FileCode,
+  FlaskRound,
+  GraduationCap
+} from "lucide-react";
 
 export default function Home() {
   return (
@@ -20,67 +20,53 @@ export default function Home() {
           APICOSU – AI‑powered SAP Tools
         </h1>
         <p className="text-gray-400 mb-12">
-          Wähle ein Modul aus, um deine Analyse zu starten.
+          Wähle ein Modul aus und starte deine Analyse.
         </p>
 
-        {/* BENTO GRID */}
-        <div
-          className="
-            grid
-            grid-cols-1
-            md:grid-cols-3
-            gap-6
-            auto-rows-[200px]
-          "
-        >
+        {/* 2 REIHEN × 3 MODULE */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-          {/* GROSSE KARTE */}
-          <div className="md:col-span-2 md:row-span-2">
-            <ModuleCard
-              title="Error Finder"
-              description="Analysiert SAP Logs, Dumps und Fehlermeldungen automatisch."
-              icon={<BoltIcon className="w-10 h-10" />}
-              href="/error-finder"
-            />
-          </div>
+          {/* ROW 1 */}
+          <ModuleCard
+            title="Error Finder"
+            description="Findet Fehler, Dumps und Log‑Probleme automatisch."
+            icon={<AlertTriangle className="w-10 h-10" />}
+            href="/error-finder"
+          />
 
-          {/* MITTLERE KARTEN */}
           <ModuleCard
             title="Customizing Analyzer"
             description="Analysiert Customizing‑Einstellungen und erkennt Konflikte."
-            icon={<WrenchScrewdriverIcon className="w-10 h-10" />}
+            icon={<Settings className="w-10 h-10" />}
             href="/customizing-analyzer"
           />
 
           <ModuleCard
             title="Transport Impact Analyzer"
-            description="Ermittelt Auswirkungen von Transporten auf Systeme & Prozesse."
-            icon={<TruckIcon className="w-10 h-10" />}
+            description="Ermittelt Auswirkungen von Transporten auf Prozesse & Systeme."
+            icon={<Truck className="w-10 h-10" />}
             href="/transport-impact-analyzer"
           />
 
-          {/* BREITE KARTE */}
-          <div className="md:col-span-3">
-            <ModuleCard
-              title="Blueprint Generator"
-              description="Erstellt automatisch technische Blueprints aus deinen Eingaben."
-              icon={<DocumentDuplicateIcon className="w-10 h-10" />}
-              href="/blueprint-generator"
-            />
-          </div>
+          {/* ROW 2 */}
+          <ModuleCard
+            title="Blueprint Generator"
+            description="Erstellt technische Blueprints aus deinen Eingaben."
+            icon={<FileCode className="w-10 h-10" />}
+            href="/blueprint-generator"
+          />
 
-          {/* KLEINE KARTEN */}
           <ModuleCard
             title="Testdaten Generator"
             description="Generiert realistische Testdaten für SAP‑Prozesse."
-            icon={<BeakerIcon className="w-10 h-10" />}
+            icon={<FlaskRound className="w-10 h-10" />}
             href="/testdaten-generator"
           />
 
           <ModuleCard
             title="Training Generator"
-            description="Erstellt Schulungsunterlagen aus deinen SAP‑Screenshots."
-            icon={<BookOpenIcon className="w-10 h-10" />}
+            description="Erstellt Schulungsunterlagen aus Screenshots."
+            icon={<GraduationCap className="w-10 h-10" />}
             href="/training-generator"
           />
 
@@ -89,5 +75,6 @@ export default function Home() {
     </div>
   );
 }
+
 
 
