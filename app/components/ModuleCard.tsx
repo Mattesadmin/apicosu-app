@@ -18,7 +18,6 @@ export default function ModuleCard({ title, description, href, icon: Icon }) {
         "hover:-translate-y-1 hover:scale-[1.02]"
       )}
     >
-      {/* Glare Effekt */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       <div className="flex items-center gap-4">
