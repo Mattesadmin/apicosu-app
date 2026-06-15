@@ -2,28 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Reset & Base Theme */
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #000; /* echtes Premium-Dark */
-  color: #e5e7eb;   /* Tailwind gray-200 */
-  font-family: Inter, sans-serif;
+/* Premium Font */
+body {
+  font-family: system-ui, sans-serif;
 }
 
-/* Entfernt alte Browser-Styles */
+/* Glow Effekt */
+.glow {
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+}
+
+/* Smooth transitions */
 * {
-  box-sizing: border-box;
+  transition: all 0.2s ease;
 }
 
-/* Entfernt ALLE alten Module-Styles */
-.panel,
-.btn,
-.module-grid,
-.module-card,
-input,
-textarea {
-  all: unset;
-}
-
-/* Tailwind übernimmt ab hier alles */
