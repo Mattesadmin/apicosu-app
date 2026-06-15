@@ -21,33 +21,32 @@ export function ModuleCard({ title, description, icon, href }: ModuleCardProps) 
         relative
         block
         rounded-2xl
-        border border-[#2a2a2a]
-        bg-[#111]
         p-6
-        overflow-hidden
+        backdrop-blur-xl
+        bg-white/5
+        border border-cyan-500/20
+        shadow-[0_0_20px_rgba(0,255,255,0.15)]
         transition-all
         duration-300
-        hover:shadow-xl
-        hover:shadow-black/40
-        hover:-translate-y-1
-        hover:scale-[1.02]
-        hover:border-[#444]
+        hover:scale-[1.03]
+        hover:shadow-[0_0_35px_rgba(0,255,255,0.35)]
+        hover:border-cyan-400/40
       "
       style={{
         perspective: "1000px",
       }}
     >
-      {/* Glare / Shine Effekt */}
+      {/* Glare */}
       <div
         className="
           pointer-events-none
           absolute inset-0
           opacity-0
-          group-hover:opacity-20
+          group-hover:opacity-30
           transition-opacity
           duration-500
           bg-gradient-to-br
-          from-white/20
+          from-cyan-300/30
           to-transparent
         "
         style={{
@@ -58,8 +57,7 @@ export function ModuleCard({ title, description, icon, href }: ModuleCardProps) 
       {/* Icon */}
       <div
         className="
-          text-white
-          text-4xl
+          text-cyan-300
           mb-4
           transition-transform
           duration-300

@@ -1,87 +1,76 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/app/components/Button";
-import { UploadBox } from "@/app/components/UploadBox";
-import { ResultBox } from "@/app/components/ResultBox";
+import { Loader2 } from "lucide-react";
 
 export default function TrainingGeneratorPage() {
-  const [text, setText] = useState("");
-  const [file, setFile] = useState<File | null>(null);
-
-  const [result, setResult] = useState("");
+  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [result, setResult] = useState("");
 
-  async function generate() {
-    setError(null);
+  async function handleAnalyze() {
+    setLoading(true);
     setResult("");
 
-    if (!text.trim() && !file) {
-      setError("Bitte Text oder Datei hochladen.");
-      return;
-    }
+    const res = await fetch("/api/training-generator", {
+      method: "POST",
+      body: JSON.stringify({ input }),
+    });
 
-    setLoading(true);
-
-    let fileBase64: string | null = null;
-    let fileName: string | null = null;
-
-    if (file) {
-      const buffer = await file.arrayBuffer();
-      fileBase64 = btoa(String.fromCharCode(...new Uint8Array(buffer)));
-      fileName = file.name;
-    }
-
-    try {
-      const res = await fetch("/api/training-generator", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          text,
-          fileName,
-          fileBase64,
-        }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.error || "Fehler bei der Generierung.");
-      } else {
-        setResult(data.output || "");
-      }
-    } catch {
-      setError("Die Anfrage konnte nicht gesendet werden.");
-    } finally {
-      setLoading(false);
-    }
+    const data = await res.json();
+    setResult(data.result);
+    setLoading(false);
   }
 
   return (
-    <div className="space-y-10">
-      <h1 className="text-3xl font-semibold">Training Generator</h1>
+    <div className="min-h-screen bg-black text-white px-6 py-20 flex justify-center">
+      <div className="w-full max-w-3xl">
 
-      <UploadBox
-        text={text}
-        onTextChange={setText}
-        file={file}
-        onFileChange={setFile}
-        placeholder="Thema, Zielgruppe oder vorhandene Unterlagen..."
-      />
+        <h1 className="text-4xl font-bold mb-4 text-center">
+          Training Generator
+        </h1>
+        <p className="text-gray-400 mb-10 text-center">
+          Erstellt Schulungsunterlagen aus Screenshots oder Beschreibungen.
+        </p>
 
-      <Button onClick={generate} disabled={loading}>
-        {loading ? "Generiere..." : "Training erzeugen"}
-      </Button>
+        <div className="
+          backdrop-blur-xl bg-white/5 border border-cyan-500/20
+          rounded-2xl p-8 shadow-[0_0_25px_rgba(0,255,255,0.15)]
+        ">
+          <textarea
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Beschreibe den Trainingsinhalt oder lade Screenshots hoch..."
+            className="
+              w-full h-48 p-4 rounded-xl bg-black/40
+              border border-cyan-500/20 text-gray-200
+              focus:outline-none focus:border-cyan-400 resize-none
+            "
+          />
 
-      <ResultBox
-        result={result}
-        loading={loading}
-        error={error}
-        emptyLabel="Noch kein Training erzeugt."
-      />
-    </div>
-  );
-}
+          <button
+            onClick={handleAnalyze}
+            disabled={loading}
+            className="
+              w-full mt-6 py-4 rounded-xl bg-cyan-600 hover:bg-cyan-500
+              active:bg-cyan-400 transition text-white font-semibold
+              shadow-[0_0_20px_rgba(0,255,255,0.25)]
+              hover:shadow-[0_0_30px_rgba(0,255,255,0.45)]
+            "
+          >
+            {loading ? (
+              <span className="flex items-center justify-center gap-2">
+                <Loader2 className="animate-spin w-5 h-5" />
+                Generiere...
+              </span>
+            ) : (
+              "Training erstellen"
+            )}
+          </button>
+        </div>
+
+        {result && (
+          <div className="
+
 
 
