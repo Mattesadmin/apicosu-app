@@ -1,11 +1,16 @@
 import "./styles/globals.css";
+import React from "react";
 
 export const metadata = {
   title: "APICOSU",
   description: "APICOSU – Automatisierte Prozess- und Customizing-Suite",
 };
 
-export default function RootLayout({ children }) {
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="de">
       <body className="bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white min-h-screen">
