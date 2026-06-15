@@ -3,13 +3,13 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { Icon as LucideIcon } from "lucide-react";
+import React from "react";
 
 interface ModuleCardProps {
   title: string;
   description: string;
   href: string;
-  icon: LucideIcon;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
 }
 
 export default function ModuleCard({
@@ -31,7 +31,6 @@ export default function ModuleCard({
         "hover:-translate-y-1 hover:scale-[1.02]"
       )}
     >
-      {/* Glare Effekt */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       <div className="flex items-center gap-4">
