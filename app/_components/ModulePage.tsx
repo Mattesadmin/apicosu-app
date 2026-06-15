@@ -1,3 +1,5 @@
+"use client";
+
 export default function ModulePage({
   short,
   title,
