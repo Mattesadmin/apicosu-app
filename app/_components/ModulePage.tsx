@@ -1,4 +1,9 @@
-export default function ModulePage({ title, children }) {
+interface ModulePageProps {
+  title: string;
+  children: React.ReactNode;
+}
+
+export default function ModulePage({ title, children }: ModulePageProps) {
   return (
     <div className="space-y-8">
       <h1 className="text-3xl font-bold text-white">{title}</h1>
@@ -8,3 +13,4 @@ export default function ModulePage({ title, children }) {
     </div>
   );
 }
+
