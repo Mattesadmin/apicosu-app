@@ -1,74 +1,99 @@
 "use client";
 
-import { ModuleCard } from "@/app/components/ModuleCard";
-import {
-  AlertTriangle,
-  Settings,
-  Truck,
-  FileCode,
-  FlaskRound,
-  GraduationCap
-} from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
+  const modules = [
+    {
+      short: "EF",
+      title: "Error Finder",
+      desc: "Analysiert Logs & Fehlermeldungen automatisch.",
+      href: "/error-finder",
+    },
+    {
+      short: "CA",
+      title: "Customizing Analyzer",
+      desc: "Erkennt Konflikte in Customizing-Einstellungen.",
+      href: "/customizing-analyzer",
+    },
+    {
+      short: "TIA",
+      title: "Transport Impact Analyzer",
+      desc: "Analysiert Auswirkungen von Transporten.",
+      href: "/transport-impact-analyzer",
+    },
+    {
+      short: "BG",
+      title: "Blueprint Generator",
+      desc: "Erstellt technische Blueprints automatisch.",
+      href: "/blueprint-generator",
+    },
+    {
+      short: "TG",
+      title: "Testdaten Generator",
+      desc: "Generiert realistische Testdaten.",
+      href: "/testdaten-generator",
+    },
+    {
+      short: "TRG",
+      title: "Training Generator",
+      desc: "Erstellt Schulungsunterlagen aus Screenshots.",
+      href: "/training-generator",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-black text-white px-6 py-20">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-black text-white px-6 py-20 flex justify-center">
+      <div className="w-full max-w-6xl">
 
-        {/* HEADER */}
-        <h1 className="text-4xl font-bold mb-4">
-          APICOSU – AI‑powered SAP Tools
+        {/* TITLE */}
+        <h1 className="text-5xl font-bold text-center mb-16">
+          APICOSU Module
         </h1>
-        <p className="text-gray-400 mb-12">
-          Wähle ein Modul aus und starte deine Analyse.
-        </p>
 
-        {/* GRID: 2 Reihen × 3 Module */}
+        {/* GRID */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {modules.map((m) => (
+            <Link
+              key={m.title}
+              href={m.href}
+              className="
+                group
+                backdrop-blur-xl
+                bg-white/5
+                border border-cyan-500/20
+                rounded-2xl
+                p-10
+                shadow-[0_0_25px_rgba(0,255,255,0.15)]
+                hover:shadow-[0_0_35px_rgba(0,255,255,0.35)]
+                transition
+                hover:-translate-y-2
+              "
+            >
+              <div className="flex flex-col items-center text-center gap-4">
 
-          <ModuleCard
-            title="Error Finder"
-            description="Findet Fehler, Dumps und Log‑Probleme automatisch."
-            icon={<AlertTriangle className="w-12 h-12" />}
-            href="/error-finder"
-          />
+                {/* SHORT BADGE */}
+                <div className="
+                  text-4xl font-bold
+                  px-6 py-3
+                  rounded-xl
+                  bg-white/10
+                  border border-cyan-500/30
+                  shadow-[0_0_20px_rgba(0,255,255,0.25)]
+                ">
+                  {m.short}
+                </div>
 
-          <ModuleCard
-            title="Customizing Analyzer"
-            description="Analysiert Customizing‑Einstellungen und erkennt Konflikte."
-            icon={<Settings className="w-12 h-12" />}
-            href="/customizing-analyzer"
-          />
+                {/* TITLE */}
+                <h2 className="text-2xl font-semibold">{m.title}</h2>
 
-          <ModuleCard
-            title="Transport Impact Analyzer"
-            description="Ermittelt Auswirkungen von Transporten auf Prozesse & Systeme."
-            icon={<Truck className="w-12 h-12" />}
-            href="/transport-impact-analyzer"
-          />
-
-          <ModuleCard
-            title="Blueprint Generator"
-            description="Erstellt technische Blueprints aus deinen Eingaben."
-            icon={<FileCode className="w-12 h-12" />}
-            href="/blueprint-generator"
-          />
-
-          <ModuleCard
-            title="Testdaten Generator"
-            description="Generiert realistische Testdaten für SAP‑Prozesse."
-            icon={<FlaskRound className="w-12 h-12" />}
-            href="/testdaten-generator"
-          />
-
-          <ModuleCard
-            title="Training Generator"
-            description="Erstellt Schulungsunterlagen aus Screenshots."
-            icon={<GraduationCap className="w-12 h-12" />}
-            href="/training-generator"
-          />
-
+                {/* DESCRIPTION */}
+                <p className="text-gray-400">{m.desc}</p>
+              </div>
+            </Link>
+          ))}
         </div>
+
       </div>
     </div>
   );
