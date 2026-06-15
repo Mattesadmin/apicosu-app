@@ -2,86 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Root Theme */
-:root {
-  --bg: #0d1117;
-  --bg-panel: #161b22;
-  --border: rgba(255, 255, 255, 0.08);
-  --text: #e6edf3;
-  --text-secondary: #8b949e;
-  --accent: #0a6ed1;
-  --accent-hover: #0d7ff0;
-  --radius: 12px;
-}
-
-/* Body */
+/* Reset & Base Theme */
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
-  color: var(--text);
+  background: #000; /* echtes Premium-Dark */
+  color: #e5e7eb;   /* Tailwind gray-200 */
   font-family: Inter, sans-serif;
 }
 
-/* Premium Panel */
-.panel {
-  background: var(--bg-panel);
-  border-radius: var(--radius);
-  padding: 24px;
-  border: 1px solid var(--border);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+/* Entfernt alte Browser-Styles */
+* {
+  box-sizing: border-box;
 }
 
-/* Premium Button */
-.btn {
-  padding: 12px 20px;
-  background: var(--accent);
-  color: white;
-  border-radius: var(--radius);
-  font-size: 16px;
-  transition: 0.2s;
+/* Entfernt ALLE alten Module-Styles */
+.panel,
+.btn,
+.module-grid,
+.module-card,
+input,
+textarea {
+  all: unset;
 }
 
-.btn:hover {
-  background: var(--accent-hover);
-}
-
-/* Input */
-input, textarea {
-  background: #0f141a;
-  border: 1px solid var(--border);
-  padding: 12px;
-  border-radius: var(--radius);
-  width: 100%;
-  color: var(--text);
-}
-
-input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(10,110,209,0.3);
-}
-
-/* Module Grid */
-.module-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 32px;
-}
-
-/* Module Card */
-.module-card {
-  background: var(--bg-panel);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px;
-  transition: 0.2s;
-  cursor: pointer;
-}
-
-.module-card:hover {
-  transform: translateY(-4px);
-  border-color: var(--accent);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.45);
-}
+/* Tailwind übernimmt ab hier alles */

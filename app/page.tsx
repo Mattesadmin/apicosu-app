@@ -4,52 +4,17 @@ import Link from "next/link";
 
 export default function Home() {
   const modules = [
-    {
-      short: "EF",
-      title: "Error Finder",
-      desc: "Analysiert Logs & Fehlermeldungen automatisch.",
-      href: "/error-finder",
-    },
-    {
-      short: "CA",
-      title: "Customizing Analyzer",
-      desc: "Erkennt Konflikte in Customizing-Einstellungen.",
-      href: "/customizing-analyzer",
-    },
-    {
-      short: "TIA",
-      title: "Transport Impact Analyzer",
-      desc: "Analysiert Auswirkungen von Transporten.",
-      href: "/transport-impact-analyzer",
-    },
-    {
-      short: "BG",
-      title: "Blueprint Generator",
-      desc: "Erstellt technische Blueprints automatisch.",
-      href: "/blueprint-generator",
-    },
-    {
-      short: "TG",
-      title: "Testdaten Generator",
-      desc: "Generiert realistische Testdaten.",
-      href: "/testdaten-generator",
-    },
-    {
-      short: "TRG",
-      title: "Training Generator",
-      desc: "Erstellt Schulungsunterlagen aus Screenshots.",
-      href: "/training-generator",
-    },
+    { short: "EF", title: "Error Finder", desc: "Analysiert Logs & Fehlermeldungen automatisch.", href: "/error-finder" },
+    { short: "CA", title: "Customizing Analyzer", desc: "Erkennt Konflikte in Customizing-Einstellungen.", href: "/customizing-analyzer" },
+    { short: "TIA", title: "Transport Impact Analyzer", desc: "Analysiert Auswirkungen von Transporten.", href: "/transport-impact-analyzer" },
+    { short: "BG", title: "Blueprint Generator", desc: "Erstellt technische Blueprints automatisch.", href: "/blueprint-generator" },
+    { short: "TG", title: "Testdaten Generator", desc: "Generiert realistische Testdaten.", href: "/testdaten-generator" },
+    { short: "TRG", title: "Training Generator", desc: "Erstellt Schulungsunterlagen aus Screenshots.", href: "/training-generator" },
   ];
 
   return (
     <div className="min-h-screen bg-black text-white px-6 py-20 flex justify-center">
       <div className="w-full max-w-6xl">
-
-        {/* TITLE */}
-        <h1 className="text-5xl font-bold text-center mb-16">
-          APICOSU Module
-        </h1>
 
         {/* GRID */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -72,7 +37,6 @@ export default function Home() {
             >
               <div className="flex flex-col items-center text-center gap-4">
 
-                {/* SHORT BADGE */}
                 <div className="
                   text-4xl font-bold
                   px-6 py-3
@@ -84,10 +48,7 @@ export default function Home() {
                   {m.short}
                 </div>
 
-                {/* TITLE */}
                 <h2 className="text-2xl font-semibold">{m.title}</h2>
-
-                {/* DESCRIPTION */}
                 <p className="text-gray-400">{m.desc}</p>
               </div>
             </Link>
@@ -98,7 +59,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-
-
