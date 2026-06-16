@@ -18,7 +18,7 @@ export default function ModuleCard({
     <Link
       href={href}
       className={cn(
-        "group relative overflow-hidden rounded-2xl p-6 flex flex-col justify-between",
+        "group relative overflow-hidden rounded-2xl p-4 flex flex-col justify-between h-[220px]",
         "bg-[#0f0f0f] border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.4)]",
         "transition-all duration-300",
         "hover:shadow-[0_0_40px_rgba(0,0,0,0.6)] hover:border-white/20 hover:-translate-y-1",
@@ -34,7 +34,7 @@ export default function ModuleCard({
 
       {/* Icon */}
       <div className="flex items-center justify-center mb-6">
-        <Icon className="w-16 h-16 text-cyan-300 drop-shadow-[0_0_15px_rgba(0,255,255,0.4)] transition-transform duration-300 group-hover:scale-110" />
+        <Icon className="w-10 h-10 text-cyan-300 drop-shadow-[0_0_15px_rgba(0,255,255,0.4)] transition-transform duration-300 group-hover:scale-110" />
       </div>
 
       {/* Text */}
