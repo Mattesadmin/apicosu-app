@@ -1,54 +1,40 @@
 import ModuleCard from "@/app/components/ModuleCard";
-import { Wrench, FileText, Boxes, Cog, Database, GraduationCap } from "lucide-react";
+import { modules } from "@/app/data/modules";
 
 export default function Home() {
   return (
-    <main className="max-w-[1400px] mx-auto px-6 py-16">
-      <h1 className="text-4xl font-bold text-white mb-12">APICOSU Module</h1>
+    <div className="min-h-screen bg-[#0b0b0b] text-white">
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <ModuleCard
-          title="Error Finder"
-          description="Finde Fehler in deinen Daten automatisch."
-          href="/error-finder"
-          icon={Wrench}
-        />
-
-        <ModuleCard
-          title="Customizing Analyzer"
-          description="Analysiere Customizing-Einstellungen effizient."
-          href="/customizing-analyzer"
-          icon={Cog}
-        />
-
-        <ModuleCard
-          title="Transport Impact Analyzer"
-          description="Analysiere Transportabhängigkeiten."
-          href="/transport-impact-analyzer"
-          icon={Boxes}
-        />
-
-        <ModuleCard
-          title="Blueprint Generator"
-          description="Erstelle automatisch technische Blueprints."
-          href="/blueprint-generator"
-          icon={FileText}
-        />
-
-        <ModuleCard
-          title="Testdaten Generator"
-          description="Generiere Testdaten für deine Systeme."
-          href="/testdaten-generator"
-          icon={Database}
-        />
-
-        <ModuleCard
-          title="Training Generator"
-          description="Erstelle Trainingsunterlagen automatisch."
-          href="/training-generator"
-          icon={GraduationCap}
-        />
+      {/* Background Glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-cyan-500/10 blur-[200px] rounded-full"></div>
       </div>
-    </main>
+
+      {/* HERO */}
+      <section className="pt-32 pb-20 text-center space-y-6 relative z-10">
+        <h1 className="text-6xl font-bold tracking-tight">
+          APICOSU
+        </h1>
+        <p className="text-white/50 text-lg max-w-[600px] mx-auto leading-relaxed">
+          Dein KI‑gestütztes Toolkit für SAP‑Beratung, Analyse und Automatisierung.
+        </p>
+      </section>
+
+      {/* MODULE GRID */}
+      <section className="max-w-[1200px] mx-auto px-6 pb-32 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {modules.map((m) => (
+            <ModuleCard
+              key={m.href}
+              title={m.title}
+              description={m.description}
+              href={m.href}
+              icon={m.icon}
+            />
+          ))}
+        </div>
+      </section>
+
+    </div>
   );
 }
