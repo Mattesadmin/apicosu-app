@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { cn } from "@/app/utils/cn";
+import { cn } from "@/lib/utils";
 
 export default function ModuleCard({
   title,
