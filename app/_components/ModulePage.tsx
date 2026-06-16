@@ -39,36 +39,49 @@ export default function ModulePage({
   }
 
   return (
-    <div className="max-w-[900px] mx-auto py-16 px-6 space-y-12">
+    <div className="max-w-[900px] mx-auto py-20 px-6 space-y-16">
 
       {/* HEADER */}
-      <div className="space-y-3">
-        <h1 className="text-4xl font-bold text-white tracking-tight">
+      <div className="space-y-4 text-center">
+        <h1 className="text-5xl font-bold text-white tracking-tight">
           {short} – {title}
         </h1>
-        <p className="text-white/60 text-lg">{description}</p>
+        <p className="text-white/50 text-lg max-w-[700px] mx-auto leading-relaxed">
+          {description}
+        </p>
       </div>
 
-      {/* GLASS CARD */}
-      <div className="p-8 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl space-y-6">
+      {/* MAIN CARD */}
+      <div
+        className="
+          p-10 rounded-3xl
+          bg-[#0f0f0f] border border-white/10
+          shadow-[0_0_40px_rgba(0,0,0,0.6)]
+          backdrop-blur-xl
+          transition-all duration-300
+          hover:shadow-[0_0_60px_rgba(0,0,0,0.8)]
+        "
+      >
+        <div className="space-y-10">
 
-        {/* UPLOAD BOX */}
-        <UploadBox
-          text={text}
-          onTextChange={setText}
-          file={file}
-          onFileChange={setFile}
-        />
+          {/* UPLOAD BOX */}
+          <UploadBox
+            text={text}
+            onTextChange={setText}
+            file={file}
+            onFileChange={setFile}
+          />
 
-        {/* ANALYZE BUTTON */}
-        <div className="pt-4">
-          <Button onClick={handleAnalyze} disabled={loading}>
-            {loading ? "Analysiere..." : "Analysieren"}
-          </Button>
+          {/* BUTTON */}
+          <div className="pt-2 flex justify-center">
+            <Button onClick={handleAnalyze} disabled={loading}>
+              {loading ? "Analysiere..." : "Analysieren"}
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* RESULT BOX */}
+      {/* RESULT */}
       {result && (
         <ResultBox result={result} />
       )}
