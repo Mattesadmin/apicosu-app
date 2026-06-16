@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { UploadBox } from "@/app/components/UploadBox";
 import { Button } from "@/app/components/Button";
+import ResultBox from "@/app/components/ResultBox";
 
 export default function ModulePage({
   short,
@@ -69,12 +70,7 @@ export default function ModulePage({
 
       {/* RESULT BOX */}
       {result && (
-        <div className="p-8 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl">
-          <h2 className="text-xl font-semibold text-white mb-4">Ergebnis</h2>
-          <pre className="text-white/80 whitespace-pre-wrap text-sm">
-            {JSON.stringify(result, null, 2)}
-          </pre>
-        </div>
+        <ResultBox result={result} />
       )}
     </div>
   );

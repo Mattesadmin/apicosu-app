@@ -1,49 +1,79 @@
 "use client";
 
-import { formatOutput } from "@/lib/formatOutput";
+import { cn } from "@/lib/utils";
+import { Copy } from "lucide-react";
+import { useState } from "react";
 
-export function ResultBox({
+interface ResultBoxProps {
+  result: any;
+  loading?: boolean;
+  error?: string | null;
+  emptyLabel?: string;
+}
+
+export default function ResultBox({
   result,
   loading,
   error,
-  emptyLabel = "Noch keine Ausgabe."
-}: {
-  result: string;
-  loading: boolean;
-  error?: string | null;
-  emptyLabel?: string;
-}) {
+  emptyLabel = "Noch keine Analyse durchgeführt."
+}: ResultBoxProps) {
+  const [copied, setCopied] = useState(false);
+
+  function handleCopy() {
+    navigator.clipboard.writeText(JSON.stringify(result, null, 2));
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500);
+  }
+
   return (
-    <div className="mt-8 w-full max-w-3xl mx-auto">
-      <div className="rounded-xl border border-gray-300 bg-white shadow-sm p-6">
+    <div
+      className={cn(
+        "relative p-6 rounded-2xl",
+        "bg-[#0f0f0f] border border-white/10",
+        "shadow-[0_0_25px_rgba(0,0,0,0.5)]",
+        "transition-all duration-300"
+      )}
+    >
+      {/* Glow Border */}
+      <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-500">
+        <div className="absolute inset-0 rounded-2xl border border-cyan-400/20 blur-[2px]"></div>
+        <div className="absolute inset-0 rounded-2xl border border-cyan-400/40 opacity-0 hover:opacity-100 transition-opacity duration-700"></div>
+      </div>
 
-        {/* LOADING */}
+      {/* Header */}
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-xl font-semibold text-white">Ergebnis</h2>
+
+        {/* Copy Button */}
+        {result && (
+          <button
+            onClick={handleCopy}
+            className="flex items-center gap-2 text-white/60 hover:text-white transition"
+          >
+            <Copy className="w-4 h-4" />
+            {copied ? "Kopiert" : "Kopieren"}
+          </button>
+        )}
+      </div>
+
+      {/* Content */}
+      <div className="max-h-[400px] overflow-auto rounded-xl bg-black/20 p-4 border border-white/5">
         {loading && (
-          <div className="text-gray-500 text-sm">
-            Die KI verarbeitet deine Eingabe…
-          </div>
+          <p className="text-white/50 text-sm">Analysiere…</p>
         )}
 
-        {/* ERROR */}
-        {!loading && error && (
-          <div className="text-red-600 text-sm">
-            {error}
-          </div>
+        {error && (
+          <p className="text-red-400 text-sm">{error}</p>
         )}
 
-        {/* EMPTY */}
         {!loading && !error && !result && (
-          <div className="text-gray-400 text-sm">
-            {emptyLabel}
-          </div>
+          <p className="text-white/40 text-sm">{emptyLabel}</p>
         )}
 
-        {/* RESULT */}
-        {!loading && !error && result && (
-          <div
-            className="prose prose-gray max-w-none leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: formatOutput(result) }}
-          />
+        {result && (
+          <pre className="text-white/80 whitespace-pre-wrap text-sm leading-relaxed">
+            {JSON.stringify(result, null, 2)}
+          </pre>
         )}
       </div>
     </div>
