@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { UploadBox } from "./UploadBox";
-import Button from "./Button";
+import { UploadBox } from "@/app/components/UploadBox";
+import Button from "@/app/components/Button";
 
 export default function ModulePage({
   short,
