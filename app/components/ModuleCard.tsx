@@ -19,22 +19,22 @@ export default function ModuleCard({
       href={href}
       className={cn(
         "group relative overflow-hidden rounded-2xl p-6 flex flex-col justify-between",
-        "bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl",
+        "bg-[#0f0f0f] border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.4)]",
         "transition-all duration-300",
-        "hover:scale-[1.03] hover:shadow-2xl hover:border-cyan-400/40",
-        "hover:bg-white/20",
+        "hover:shadow-[0_0_40px_rgba(0,0,0,0.6)] hover:border-white/20 hover:-translate-y-1",
+        "before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:to-transparent before:opacity-0 group-hover:opacity-100 before:transition-opacity",
         className
       )}
     >
-      {/* Glare Effekt */}
-      <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition-opacity duration-300">
-        <div className="absolute -top-20 -left-20 w-60 h-60 bg-cyan-400/30 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-blue-500/30 rounded-full blur-3xl"></div>
+      {/* Animated Glow Border */}
+      <div className="absolute inset-0 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="absolute inset-0 rounded-2xl border border-cyan-400/20 blur-[2px]"></div>
+        <div className="absolute inset-0 rounded-2xl border border-cyan-400/40 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
       </div>
 
       {/* Icon */}
       <div className="flex items-center justify-center mb-6">
-        <Icon className="w-16 h-16 text-cyan-300 drop-shadow-[0_0_10px_rgba(0,255,255,0.4)] transition-transform duration-300 group-hover:scale-110" />
+        <Icon className="w-16 h-16 text-cyan-300 drop-shadow-[0_0_15px_rgba(0,255,255,0.4)] transition-transform duration-300 group-hover:scale-110" />
       </div>
 
       {/* Text */}
@@ -42,13 +42,13 @@ export default function ModuleCard({
         <h3 className="text-2xl font-semibold text-white tracking-tight">
           {title}
         </h3>
-        <p className="text-white/60 text-sm leading-relaxed">
+        <p className="text-white/50 text-sm leading-relaxed">
           {description}
         </p>
       </div>
 
-      {/* Subtle Bottom Glow */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      {/* Bottom Glow Line */}
+      <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     </Link>
   );
 }
