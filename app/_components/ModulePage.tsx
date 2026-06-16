@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { UploadBox } from "@/app/components/UploadBox";
-import Button from "@/app/components/Button";
+import { Button } from "@/app/components/Button";
 
 export default function ModulePage({
   short,
