@@ -1,72 +1,64 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { ChangeEvent } from "react";
+import { cn } from "@/lib/utils";
+import { Upload } from "lucide-react";
 
-export function UploadBox({
-  text,
-  onTextChange,
-  file,
-  onFileChange,
-  placeholder = "Text eingeben oder Datei hochladen..."
-}: {
+interface UploadBoxProps {
   text: string;
   onTextChange: (value: string) => void;
-
   file: File | null;
   onFileChange: (file: File | null) => void;
+}
 
-  placeholder?: string;
-}) {
-  const [dragOver, setDragOver] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
-    setDragOver(false);
-
-    const f = e.dataTransfer.files?.[0];
-    if (f) onFileChange(f);
-  };
+export function UploadBox({ text, onTextChange, file, onFileChange }: UploadBoxProps) {
+  function handleFile(e: ChangeEvent<HTMLInputElement>) {
+    const f = e.target.files?.[0] || null;
+    onFileChange(f);
+  }
 
   return (
-    <div className="space-y-4">
-      {/* TEXTFELD */}
+    <div className="space-y-6">
+
+      {/* TEXT INPUT */}
       <textarea
-        className="w-full h-40 p-4 rounded bg-[#161b22] border border-white/10 text-white"
-        placeholder={placeholder}
         value={text}
         onChange={(e) => onTextChange(e.target.value)}
+        placeholder="Text eingeben..."
+        className={cn(
+          "w-full h-32 p-4 rounded-xl resize-none",
+          "bg-[#0f0f0f] border border-white/10 text-white",
+          "placeholder-white/30",
+          "focus:outline-none focus:border-cyan-400/40",
+          "transition-all duration-300"
+        )}
       />
 
-      {/* DATEI-UPLOAD */}
-      <div
-        className={`upload-box ${dragOver ? "dragover" : ""}`}
-        onDragOver={(e) => {
-          e.preventDefault();
-          setDragOver(true);
-        }}
-        onDragLeave={() => setDragOver(false)}
-        onDrop={handleDrop}
-        onClick={() => fileInputRef.current?.click()}
-      >
-        <p>Datei hierher ziehen oder klicken</p>
-
-        {file && (
-          <p className="text-xs text-gray-400 mt-2">
-            Ausgewählt: <strong>{file.name}</strong>
-          </p>
+      {/* FILE UPLOAD */}
+      <label
+        className={cn(
+          "relative flex flex-col items-center justify-center w-full h-40 rounded-xl cursor-pointer",
+          "bg-[#0f0f0f] border border-white/10",
+          "hover:border-cyan-400/40 hover:shadow-[0_0_25px_rgba(0,255,255,0.15)]",
+          "transition-all duration-300"
         )}
+      >
+        {/* Glow Layer */}
+        <div className="absolute inset-0 rounded-xl opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+          <div className="absolute inset-0 rounded-xl border border-cyan-400/20 blur-[2px]"></div>
+          <div className="absolute inset-0 rounded-xl border border-cyan-400/40 opacity-0 hover:opacity-100 transition-opacity duration-700"></div>
+        </div>
 
-        <input
-          type="file"
-          ref={fileInputRef}
-          style={{ display: "none" }}
-          onChange={(e) => {
-            const f = e.target.files?.[0];
-            if (f) onFileChange(f);
-          }}
-        />
-      </div>
+        {/* Icon */}
+        <Upload className="w-10 h-10 text-cyan-300 mb-3 drop-shadow-[0_0_10px_rgba(0,255,255,0.4)]" />
+
+        {/* Text */}
+        <span className="text-white/70 text-sm">
+          {file ? file.name : "Datei hochladen oder hier ablegen"}
+        </span>
+
+        <input type="file" className="hidden" onChange={handleFile} />
+      </label>
     </div>
   );
 }
