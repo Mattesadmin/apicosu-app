@@ -1,51 +1,54 @@
-import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import React from "react";
-
-interface ModuleCardProps {
-  title: string;
-  description: string;
-  href: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-}
+import { cn } from "@/app/utils/cn";
 
 export default function ModuleCard({
   title,
   description,
   href,
   icon: Icon,
-}: ModuleCardProps) {
+  className
+}: {
+  title: string;
+  description: string;
+  href: string;
+  icon: any;
+  className?: string;
+}) {
   return (
     <Link
       href={href}
       className={cn(
-        "group relative rounded-2xl p-6 backdrop-blur-xl",
-        "bg-white/10 dark:bg-white/5",
-        "border border-white/20 dark:border-white/10",
-        "shadow-[0_0_20px_rgba(0,255,255,0.15)]",
-        "hover:shadow-[0_0_35px_rgba(0,255,255,0.35)]",
+        "group relative overflow-hidden rounded-2xl p-6 flex flex-col justify-between",
+        "bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl",
         "transition-all duration-300",
-        "hover:-translate-y-1 hover:scale-[1.02]"
+        "hover:scale-[1.03] hover:shadow-2xl hover:border-cyan-400/40",
+        "hover:bg-white/20",
+        className
       )}
     >
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-      <div className="flex items-center gap-4">
-        <div className="p-3 rounded-xl bg-cyan-500/20 border border-cyan-400/30">
-          <Icon className="w-8 h-8 text-cyan-300" />
-        </div>
-
-        <div>
-          <h3 className="text-xl font-semibold text-white">{title}</h3>
-          <p className="text-sm text-white/70">{description}</p>
-        </div>
+      {/* Glare Effekt */}
+      <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-20 transition-opacity duration-300">
+        <div className="absolute -top-20 -left-20 w-60 h-60 bg-cyan-400/30 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-blue-500/30 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="mt-4 flex items-center gap-2 text-cyan-300 group-hover:gap-3 transition-all">
-        <span>Öffnen</span>
-        <ArrowRight className="w-4 h-4" />
+      {/* Icon */}
+      <div className="flex items-center justify-center mb-6">
+        <Icon className="w-16 h-16 text-cyan-300 drop-shadow-[0_0_10px_rgba(0,255,255,0.4)] transition-transform duration-300 group-hover:scale-110" />
       </div>
+
+      {/* Text */}
+      <div className="text-center space-y-2">
+        <h3 className="text-2xl font-semibold text-white tracking-tight">
+          {title}
+        </h3>
+        <p className="text-white/60 text-sm leading-relaxed">
+          {description}
+        </p>
+      </div>
+
+      {/* Subtle Bottom Glow */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     </Link>
   );
 }
