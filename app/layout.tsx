@@ -3,7 +3,7 @@ import React from "react";
 
 export const metadata = {
   title: "APICOSU",
-  description: "APICOSU – Automatisierte Prozess- und Customizing-Suite",
+  description: "APICOSU – Application for Intelligent Consulting Support",
 };
 
 interface RootLayoutProps {

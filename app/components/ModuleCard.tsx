@@ -29,8 +29,8 @@ export default function ModuleCard({
     <Link
       href={href}
       className={cn(
-        "group relative rounded-xl p-6 h-[200px] flex flex-col justify-between",
-        "bg-[#111] border border-white/10",
+        "group relative rounded-xl p-6 h-[200px] flex flex-col justify-between no-underline text-white",
+        "bg-[#111] border border-white/10 text-white",
         "shadow-[0_4px_20px_rgba(0,0,0,0.25)]",
         "hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)] hover:border-white/20",
         "transition-all duration-300 hover:-translate-y-1",
