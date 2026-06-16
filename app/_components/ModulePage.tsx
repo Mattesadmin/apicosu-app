@@ -61,10 +61,9 @@ export default function ModulePage({
 
         {/* ANALYZE BUTTON */}
         <div className="pt-4">
-          <Button
-            label={loading ? "Analysiere..." : "Analysieren"}
-            onClick={handleAnalyze}
-          />
+          <Button onClick={handleAnalyze} disabled={loading}>
+            {loading ? "Analysiere..." : "Analysieren"}
+          </Button>
         </div>
       </div>
 
