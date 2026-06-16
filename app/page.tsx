@@ -16,13 +16,13 @@ export default function Home() {
           APICOSU
         </h1>
         <p className="text-white/50 text-lg max-w-[600px] mx-auto leading-relaxed">
-          Dein KI‑gestütztes Toolkit für SAP‑Beratung, Analyse und Automatisierung.
+          Dein intelligentes Toolkit für SAP‑Beratung, Analyse und Automatisierung.
         </p>
       </section>
 
       {/* MODULE GRID */}
       <section className="max-w-[1200px] mx-auto px-6 pb-32 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {modules.map((m) => (
             <ModuleCard
               key={m.href}
