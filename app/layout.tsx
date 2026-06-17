@@ -13,17 +13,24 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="de">
-      <body className="bg-black text-white min-h-screen">
-        <header className="w-full border-b border-white/10 bg-black/20 backdrop-blur-md relative z-50">
-          <div className="max-w-[1400px] mx-auto px-6 py-4">
-            <h1 className="text-2xl font-bold tracking-wide">APICOSU</h1>
+      <body className="bg-gradient-to-br from-[#0a0a0a] via-[#0f0f0f] to-[#0a0a0a] text-white min-h-screen">
+        
+        {/* HEADER */}
+        <header className="w-full border-b border-white/10 bg-black/30 backdrop-blur-xl sticky top-0 z-50">
+          <div className="max-w-[1400px] mx-auto px-6 py-4 flex items-center">
+            <h1 className="text-2xl font-bold tracking-wide bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              APICOSU
+            </h1>
           </div>
         </header>
 
-        <main className="max-w-[1400px] mx-auto px-6 py-12">
+        {/* MAIN CONTENT */}
+        <main className="max-w-[1400px] mx-auto px-6 py-16">
           {children}
         </main>
+
       </body>
     </html>
   );
 }
+
