@@ -51,7 +51,7 @@ export default function ModuleCard({
 
       {/* Kürzel */}
       <div className="text-[12rem] font-extrabold text-white !text-white tracking-tight mb-10 
-                      drop-shadow-[0_0_25px_rgba(255,255,255,0.5)]">
+                      drop-shadow-[0_0_25px_rgba(255,255,255,1)]">
         {short}
       </div>
 
@@ -62,12 +62,12 @@ export default function ModuleCard({
 
       {/* Voller Name */}
       <h3 className="text-4xl font-semibold text-white !text-white mb-4 
-                     drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
+                     drop-shadow-[0_0_15px_rgba(255,255,255,1)]">
         {title}
       </h3>
 
       {/* Beschreibung */}
-      <p className="text-white !text-white text-2xl leading-relaxed max-w-[85%]">
+      <p className="text-white !text-white text-2xl leading-relaxed max-w-[95%]">
         {description}
       </p>
     </Link>
