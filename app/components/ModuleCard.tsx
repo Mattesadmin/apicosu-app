@@ -29,35 +29,35 @@ export default function ModuleCard({
     <Link
       href={href}
       className={cn(
-        "group relative aspect-square rounded-2xl p-6 flex flex-col items-center justify-center text-center",
-        "bg-gradient-to-br from-[#141414] to-[#1f1f1f] border border-white/10",
-        "shadow-[0_0_25px_rgba(0,0,0,0.6)] hover:shadow-[0_0_45px_rgba(0,0,0,0.9)]",
-        "transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]",
+        "group relative aspect-square rounded-3xl p-8 flex flex-col items-center justify-center text-center",
+        // Hintergrund + Abhebung
+        "bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-cyan-400/30",
+        "shadow-[0_0_40px_rgba(0,255,255,0.15)] hover:shadow-[0_0_60px_rgba(0,255,255,0.25)]",
+        // Hover Effekt
+        "transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03]",
         "overflow-hidden no-underline",
         className
       )}
     >
       {/* Kürzel */}
-      <div className="text-5xl font-extrabold text-white tracking-tight mb-3">
+      <div className="text-6xl font-extrabold text-white tracking-tight mb-4">
         {short}
       </div>
 
       {/* Icon */}
-      <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-3">
-        <Icon className="w-6 h-6 text-cyan-400" />
+      <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4">
+        <Icon className="w-7 h-7 text-cyan-400" />
       </div>
 
       {/* Voller Name */}
-      <h3 className="text-xl font-semibold text-white mb-2">
+      <h3 className="text-2xl font-semibold text-white mb-3">
         {title}
       </h3>
 
       {/* Beschreibung */}
-      <p className="text-white/70 text-sm leading-relaxed max-w-[90%]">
+      <p className="text-white/80 text-base leading-relaxed max-w-[90%]">
         {description}
       </p>
     </Link>
   );
 }
-
-
