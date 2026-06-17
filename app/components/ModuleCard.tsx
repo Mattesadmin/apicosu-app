@@ -30,33 +30,44 @@ export default function ModuleCard({
       href={href}
       className={cn(
         "group relative aspect-square rounded-[2rem] p-16 flex flex-col items-center justify-center text-center",
-        // KLARE TRENNUNG
+        
+        // Hintergrund + klare Trennung
         "bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a]",
-        "border border-white/20",
-        "shadow-[0_0_40px_rgba(0,0,0,0.9)] hover:shadow-[0_0_60px_rgba(0,0,0,1)]",
-        // Hover Effekt
+        "border border-white/25",
+        "shadow-[0_0_40px_rgba(0,0,0,0.9)] hover:shadow-[0_0_70px_rgba(0,0,0,1)]",
+
+        // Hover Bewegung
         "transition-all duration-300 hover:-translate-y-1 hover:scale-[1.04]",
+
         "overflow-hidden no-underline",
         className
       )}
     >
+
+      {/* Apple‑Style Glare */}
+      <div className="absolute inset-0 rounded-[2rem] pointer-events-none 
+                      bg-gradient-to-t from-transparent via-white/10 to-transparent 
+                      opacity-20" />
+
       {/* Kürzel */}
-      <div className="text-[12rem] font-extrabold text-white tracking-tight mb-10 drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">
+      <div className="text-[12rem] font-extrabold text-white !text-white tracking-tight mb-10 
+                      drop-shadow-[0_0_25px_rgba(255,255,255,0.5)]">
         {short}
       </div>
 
       {/* Icon */}
       <div className="w-20 h-20 rounded-xl bg-white/10 flex items-center justify-center mb-8">
-        <Icon className="w-12 h-12 text-white" />
+        <Icon className="w-12 h-12 text-white !text-white" />
       </div>
 
       {/* Voller Name */}
-      <h3 className="text-4xl font-semibold text-white mb-4 drop-shadow-[0_0_12px_rgba(255,255,255,0.3)]">
+      <h3 className="text-4xl font-semibold text-white !text-white mb-4 
+                     drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
         {title}
       </h3>
 
       {/* Beschreibung */}
-      <p className="text-white text-2xl leading-relaxed max-w-[85%]">
+      <p className="text-white !text-white text-2xl leading-relaxed max-w-[85%]">
         {description}
       </p>
     </Link>

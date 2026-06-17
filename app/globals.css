@@ -2,8 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Globaler Body-Style OHNE @apply */
+/* Globaler Hintergrund + weiße Schrift */
+html, body {
+  background: #0A0A0A;
+  color: #FFFFFF;
+  min-height: 100%;
+}
+
+/* Bessere Kantenglättung */
 body {
-  background-color: #000;
-  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
