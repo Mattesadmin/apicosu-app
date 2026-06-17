@@ -29,33 +29,33 @@ export default function ModuleCard({
     <Link
       href={href}
       className={cn(
-        "group relative aspect-square rounded-3xl p-8 flex flex-col items-center justify-center text-center",
+        "group relative aspect-square rounded-3xl p-10 flex flex-col items-center justify-center text-center",
         // Hintergrund + Abhebung
-        "bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-cyan-400/30",
-        "shadow-[0_0_40px_rgba(0,255,255,0.15)] hover:shadow-[0_0_60px_rgba(0,255,255,0.25)]",
+        "bg-gradient-to-br from-[#0b0b0b] to-[#1a1a1a] border border-cyan-400/40",
+        "shadow-[0_0_50px_rgba(0,255,255,0.25)] hover:shadow-[0_0_70px_rgba(0,255,255,0.35)]",
         // Hover Effekt
-        "transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03]",
+        "transition-all duration-300 hover:-translate-y-1 hover:scale-[1.04]",
         "overflow-hidden no-underline",
         className
       )}
     >
       {/* Kürzel */}
-      <div className="text-6xl font-extrabold text-white tracking-tight mb-4">
+      <div className="text-7xl font-extrabold text-white tracking-tight mb-4 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
         {short}
       </div>
 
       {/* Icon */}
-      <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4">
-        <Icon className="w-7 h-7 text-cyan-400" />
+      <div className="w-14 h-14 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4">
+        <Icon className="w-8 h-8 text-cyan-300" />
       </div>
 
       {/* Voller Name */}
-      <h3 className="text-2xl font-semibold text-white mb-3">
+      <h3 className="text-2xl font-semibold text-white mb-3 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]">
         {title}
       </h3>
 
       {/* Beschreibung */}
-      <p className="text-white/80 text-base leading-relaxed max-w-[90%]">
+      <p className="text-white/90 text-base leading-relaxed max-w-[90%]">
         {description}
       </p>
     </Link>
