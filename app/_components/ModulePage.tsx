@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { UploadBox } from "@/app/components/UploadBox";
-import { Button } from "@/app/components/Button";
 import ResultBox from "@/app/components/ResultBox";
 
 export default function ModulePage({
@@ -74,9 +73,13 @@ export default function ModulePage({
 
           {/* BUTTON */}
           <div className="pt-2 flex justify-center">
-            <Button onClick={handleAnalyze} disabled={loading}>
-              {loading ? "Analysiere..." : "Analysieren"}
-            </Button>
+            <button
+              onClick={handleAnalyze}
+              disabled={loading}
+              className="px-4 py-2 rounded-md bg-cyan-600 hover:bg-cyan-700 disabled:opacity-50"
+            >
+             {loading ? "Generiere..." : "Blueprint erzeugen"}
+            </button>
           </div>
         </div>
       </div>

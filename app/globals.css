@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: globale Schrift */
+/* Globaler Body-Style OHNE @apply */
 body {
-  @apply bg-black text-white;
+  background-color: #000;
+  color: #fff;
 }
-
