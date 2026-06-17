@@ -29,34 +29,33 @@ export default function ModuleCard({
     <Link
       href={href}
       className={cn(
-        "group relative rounded-xl p-6 h-[200px] flex flex-col justify-between no-underline",
-        // Hintergrund + Glow
-        "bg-gradient-to-br from-[#0f0f0f] to-[#1a1a1a] border border-cyan-500/20",
-        "shadow-[0_4px_20px_rgba(0,0,0,0.35)] hover:shadow-[0_8px_35px_rgba(0,255,255,0.25)]",
-        // Hover Bewegung
+        "group relative aspect-square rounded-2xl p-6 flex flex-col justify-between",
+        "bg-gradient-to-br from-[#111] to-[#1b1b1b] border border-cyan-500/20",
+        "shadow-[0_4px_25px_rgba(0,255,255,0.08)] hover:shadow-[0_6px_35px_rgba(0,255,255,0.18)]",
         "transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]",
+        "overflow-hidden no-underline",
         className
       )}
     >
       {/* Icon + Title */}
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-md bg-cyan-500/10 flex items-center justify-center">
-          <Icon className="w-5 h-5 text-cyan-400" />
+        <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+          <Icon className="w-6 h-6 text-cyan-400" />
         </div>
-        <h3 className="text-lg font-semibold text-cyan-400 tracking-tight">
+        <h3 className="text-xl font-semibold text-cyan-300 tracking-wide">
           {title}
         </h3>
       </div>
 
       {/* Description */}
-      <p className="text-white/70 text-xs leading-relaxed mt-2">
+      <p className="text-white/80 text-sm leading-relaxed mt-2">
         {description}
       </p>
 
       {/* Pattern Background */}
       {pattern && (
         <div
-          className="absolute inset-0 opacity-10 pointer-events-none bg-right-bottom bg-no-repeat bg-[length:120px]"
+          className="absolute inset-0 opacity-10 pointer-events-none bg-right-bottom bg-no-repeat bg-[length:140px]"
           style={{ backgroundImage: `url(${pattern})` }}
         />
       )}
