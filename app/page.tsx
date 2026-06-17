@@ -11,7 +11,6 @@ export default function Home() {
             title={m.title}
             description={m.description}
             href={m.href}
-            icon={m.icon}
           />
         ))}
       </div>
