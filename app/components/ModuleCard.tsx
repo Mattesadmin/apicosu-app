@@ -31,7 +31,7 @@ export default function ModuleCard({
       style={{
         color: "#ffffff",
         mixBlendMode: "normal",
-        filter: "none"
+        filter: "none",
         transition: "transform 0.6s ease",
         transform: "rotateX(0deg) rotateY(0deg) scale(1)"
       }}
@@ -41,10 +41,11 @@ export default function ModuleCard({
         "border border-white/20",
         "shadow-[0_10px_50px_rgba(0,0,0,1)] hover:shadow-[0_20px_80px_rgba(0,0,0,1)]",
         "overflow-hidden no-underline",
+        "perspective-[1200px]",
        className
       )}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "rotateX(6deg) rotateY(6deg) scale(1.04)";
+        e.currentTarget.style.transform = "rotateX(8deg) rotateY(8deg) scale(1.05)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
