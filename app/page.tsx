@@ -3,8 +3,9 @@ import { modules } from "@/app/data/modules";
 
 export default function Home() {
   return (
-    <main className="max-w-[1400px] mx-auto px-12 pt-32 pb-20">
-      <div className="grid grid-cols-3 gap-30">
+    <main className="relative max-w-[1400px] mx-auto px-12 pt-40 pb-32">
+      {/* Abstand über dem Grid erzwingen */}
+      <div className="grid grid-cols-3 gap-24 mt-8">
         {modules.map((m) => (
           <ModuleCard
             key={m.href}
