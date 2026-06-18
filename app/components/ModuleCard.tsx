@@ -32,8 +32,8 @@ export default function ModuleCard({
         color: "#ffffff",
         mixBlendMode: "normal",
         filter: "none"
-        transformStyle: "preserve-3d",
-        transition: "transform 0.6s ease"
+        transition: "transform 0.6s ease",
+        transform: "rotateX(0deg) rotateY(0deg) scale(1)"
       }}
       className={cn(
         "group relative aspect-square rounded-[2rem] p-16 flex flex-col items-center justify-center text-center",
