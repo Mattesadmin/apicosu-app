@@ -32,17 +32,23 @@ export default function ModuleCard({
         color: "#ffffff",
         mixBlendMode: "normal",
         filter: "none"
+        transformStyle: "preserve-3d",
+        transition: "transform 0.6s ease"
       }}
       className={cn(
         "group relative aspect-square rounded-[2rem] p-16 flex flex-col items-center justify-center text-center",
         "bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a]",
         "border border-white/20",
         "shadow-[0_10px_50px_rgba(0,0,0,1)] hover:shadow-[0_20px_80px_rgba(0,0,0,1)]",
-        // 3D‑Rotation beim Hover
-        "transition-transform duration-500 ease-out hover:rotate-x-3 hover:rotate-y-3",
         "overflow-hidden no-underline",
-        className
+       className
       )}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "rotateX(6deg) rotateY(6deg) scale(1.04)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+      }}
     >
 
       {/* Apple Glare */}
