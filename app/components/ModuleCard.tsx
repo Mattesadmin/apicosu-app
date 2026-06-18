@@ -50,11 +50,11 @@ export default function ModuleCard({
 
       {/* Outer Halo */}
       <div className="absolute inset-0 rounded-[2rem] pointer-events-none 
-                      shadow-[0_0_120px_rgba(255,255,255,0.12)]" />
+                      shadow-[0_20px_120px_rgba(255,255,255,0.12)]" />
 
       {/* Inner Glow */}
       <div className="absolute inset-0 rounded-[2rem] pointer-events-none 
-                      shadow-[0_0_40px_rgba(255,255,255,0.18)]" />
+                      shadow-[0_10px_40px_rgba(255,255,255,0.18)]" />
 
       {/* Light Edge */}
       <div className="absolute inset-0 rounded-[2rem] pointer-events-none 
@@ -62,13 +62,14 @@ export default function ModuleCard({
 
       {/* Kürzel */}
       <div className="text-[12rem] font-extrabold text-white !text-white tracking-tight mb-10 
-                      drop-shadow-[0_0_35px_rgba(255,255,255,0.45)]">
+                      drop-shadow-[0_10px_35px_rgba(255,255,255,0.45)]">
         {short}
       </div>
 
-      {/* Icon */}
-      <div className="w-20 h-20 rounded-xl bg-white/10 flex items-center justify-center mb-8 
-                      shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+      {/* Icon – Glass Morph Effekt */}
+      <div className="w-20 h-20 rounded-xl backdrop-blur-md bg-white/10 border border-white/20 
+                      flex items-center justify-center mb-8 shadow-[inset_0_0_20px_rgba(255,255,255,0.25)] 
+                      hover:shadow-[inset_0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300">
         <Icon className="w-12 h-12 text-white !text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]" />
       </div>
 
