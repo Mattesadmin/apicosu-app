@@ -50,6 +50,10 @@ export default function ModuleCard({
       <div className="absolute inset-0 rounded-[2rem] pointer-events-none 
                       bg-gradient-to-t from-transparent via-white/10 to-transparent opacity-20" />
 
+      {/* Ambient Glow */}
+      <div className="absolute inset-0 rounded-[2rem] pointer-events-none 
+                      shadow-[0_0_60px_rgba(255,255,255,0.05)]" />
+
       {/* Kürzel mit weißem Glow (Option 1) */}
       <div className="text-[12rem] font-extrabold text-white !text-white mix-blend-normal filter-none tracking-tight mb-10 
                       drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]">
