@@ -37,8 +37,9 @@ export default function ModuleCard({
         "group relative aspect-square rounded-[2rem] p-16 flex flex-col items-center justify-center text-center",
         "bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a]",
         "border border-white/20",
-        "shadow-[0_0_50px_rgba(0,0,0,1)] hover:shadow-[0_0_80px_rgba(0,0,0,1)]",
-        "transition-all duration-300 hover:-translate-y-1 hover:scale-[1.04]",
+        "shadow-[0_10px_50px_rgba(0,0,0,1)] hover:shadow-[0_20px_80px_rgba(0,0,0,1)]",
+        // 3D‑Rotation beim Hover
+        "transition-transform duration-500 ease-out hover:rotate-x-3 hover:rotate-y-3",
         "overflow-hidden no-underline",
         className
       )}
@@ -50,11 +51,11 @@ export default function ModuleCard({
 
       {/* Outer Halo */}
       <div className="absolute inset-0 rounded-[2rem] pointer-events-none 
-                      shadow-[0_20px_120px_rgba(255,255,255,0.12)]" />
+                      shadow-[0_20px_120px_rgba(255,255,255,0.1)]" />
 
       {/* Inner Glow */}
       <div className="absolute inset-0 rounded-[2rem] pointer-events-none 
-                      shadow-[0_10px_40px_rgba(255,255,255,0.18)]" />
+                      shadow-[0_-10px_60px_rgba(255,255,255,0.12)]" />
 
       {/* Light Edge */}
       <div className="absolute inset-0 rounded-[2rem] pointer-events-none 
