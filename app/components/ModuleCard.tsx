@@ -73,13 +73,13 @@ export default function ModuleCard({
       </div>
 
       {/* Titel */}
-      <h3 className="text-8xl font-semibold text-white mb-6 tracking-tight 
+      <h3 className="text-12xl font-semibold text-white mb-6 tracking-tight 
                      drop-shadow-[0_0_25px_rgba(255,255,255,0.45)]">
         {title}
       </h3>
 
       {/* Beschreibung */}
-      <p className="text-4xl text-white leading-relaxed max-w-[85%] 
+      <p className="text-6xl text-white leading-relaxed max-w-[85%] 
                     drop-shadow-[0_0_20px_rgba(255,255,255,0.25)]">
         {description}
       </p>
