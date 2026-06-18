@@ -47,11 +47,11 @@ export default function ModuleCard({
       <div className="absolute inset-0 rounded-[2rem] pointer-events-none 
                       bg-gradient-to-t from-transparent via-white/10 to-transparent opacity-30" />
 
-      {/* Outer Halo – leicht nach unten versetzt */}
+      {/* Outer Halo */}
       <div className="absolute inset-0 rounded-[2rem] pointer-events-none 
                       shadow-[0_20px_120px_rgba(255,255,255,0.1)]" />
 
-      {/* Inner Glow – leicht nach oben versetzt */}
+      {/* Inner Glow */}
       <div className="absolute inset-0 rounded-[2rem] pointer-events-none 
                       shadow-[0_-10px_60px_rgba(255,255,255,0.12)]" />
 
@@ -60,27 +60,27 @@ export default function ModuleCard({
                       border border-white/10" />
 
       {/* Kürzel */}
-      <div className="text-[12rem] font-extrabold text-white !text-white tracking-tight mb-10 
-                      drop-shadow-[0_10px_35px_rgba(255,255,255,0.45)]">
+      <div className="text-[14rem] font-extrabold text-white tracking-tight mb-12 
+                      drop-shadow-[0_0_45px_rgba(255,255,255,0.5)]">
         {short}
       </div>
 
-      {/* Icon – Glass Morph Effekt */}
-      <div className="w-20 h-20 rounded-xl backdrop-blur-md bg-white/10 border border-white/20 
-                      flex items-center justify-center mb-8 shadow-[inset_0_0_20px_rgba(255,255,255,0.25)] 
-                      hover:shadow-[inset_0_0_30px_rgba(255,255,255,0.35)] transition-all duration-300">
-        <Icon className="w-12 h-12 text-white !text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]" />
+      {/* Icon – Glass Morph */}
+      <div className="w-24 h-24 rounded-xl backdrop-blur-md bg-white/10 border border-white/20 
+                      flex items-center justify-center mb-10 shadow-[inset_0_0_25px_rgba(255,255,255,0.25)] 
+                      hover:shadow-[inset_0_0_35px_rgba(255,255,255,0.35)] transition-all duration-300">
+        <Icon className="w-14 h-14 text-white drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]" />
       </div>
 
       {/* Titel */}
-      <h3 className="text-4xl font-semibold text-white !text-white mb-4 
-                     drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">
+      <h3 className="text-6xl font-semibold text-white mb-6 tracking-tight 
+                     drop-shadow-[0_0_25px_rgba(255,255,255,0.45)]">
         {title}
       </h3>
 
       {/* Beschreibung */}
-      <p className="text-white !text-white text-2xl leading-relaxed max-w-[85%] 
-                    drop-shadow-[0_0_15px_rgba(255,255,255,0.25)]">
+      <p className="text-3xl text-white leading-relaxed max-w-[85%] 
+                    drop-shadow-[0_0_20px_rgba(255,255,255,0.25)]">
         {description}
       </p>
     </Link>

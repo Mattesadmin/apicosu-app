@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Moderne Schriftart */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 /* Globaler Hintergrund + weiße Schrift */
 html, body {
   background: #0A0A0A;
   color: #FFFFFF;
   min-height: 100%;
+  font-family: 'Inter', sans-serif;
 }
 
 /* Bessere Kantenglättung */
