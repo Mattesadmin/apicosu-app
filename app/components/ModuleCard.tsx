@@ -16,22 +16,23 @@ export default function ModuleCard({
     <Link
       href={href}
       className={cn(
-        "group w-full rounded-xl px-8 py-6 bg-[#f9f9f9] border border-[#e0e0e0]",
-        "flex items-center justify-between hover:bg-[#f0f0f0] transition-all duration-200",
-        "shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)]"
+        "group w-full rounded-2xl px-10 py-8 bg-[#1a1a1a] border border-[#2a2a2a]",
+        "flex items-center justify-between hover:bg-[#222] transition-all duration-300",
+        "shadow-[0_8px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_12px_32px_rgba(0,0,0,0.5)]",
+        "cursor-pointer"
       )}
     >
-      <div className="flex items-center gap-6">
-        <div className="w-14 h-14 bg-[#e8eef6] rounded-lg flex items-center justify-center border border-[#d0d7e2]">
-          <Icon className="w-8 h-8 text-[#0070f2]" />
+      <div className="flex items-center gap-8">
+        <div className="w-20 h-20 bg-[#2a2a2a] rounded-xl flex items-center justify-center border border-[#3a3a3a]">
+          <Icon className="w-10 h-10 text-[#00aaff]" />
         </div>
         <div>
-          <h3 className="text-lg font-semibold text-[#1a1a1a]">{title}</h3>
-          <p className="text-sm text-[#555]">{description}</p>
+          <h3 className="text-2xl font-semibold text-white">{title}</h3>
+          <p className="text-base text-gray-400">{description}</p>
         </div>
       </div>
 
-      <div className="text-[#999] group-hover:text-[#0070f2] transition-colors text-xl">
+      <div className="text-gray-500 group-hover:text-[#00aaff] transition-colors text-2xl">
         →
       </div>
     </Link>
