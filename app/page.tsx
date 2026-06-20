@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="max-w-[1400px] mx-auto px-12 pt-40 pb-32">
       {/* Abstand über dem Grid erzwingen */}
-      <div className="grid grid-cols-3 gap-24">
+      <div className="grid grid-cols-3 gap-24 mt-8">
         {modules.map((m) => (
           <ModuleCard
             key={m.href}
