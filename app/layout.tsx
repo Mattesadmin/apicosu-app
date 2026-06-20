@@ -13,10 +13,10 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="de">
-      <body className="bg-gradient-to-br from-[#0a0a0a] via-[#0f0f0f] to-[#0a0a0a] text-white min-h-screen">
-
+      <body className="bg-[#0a0a0a] text-white min-h-screen">
+        
         {/* HEADER */}
-        <header className="w-full border-b border-white/10 bg-black/30 backdrop-blur-xl sticky top-0 z-50 h-[5rem] flex items-center">
+        <header className="sticky top-0 z-50 w-full bg-black/40 backdrop-blur-xl border-b border-white/10 h-[5rem] flex items-center">
           <div className="max-w-[1400px] mx-auto px-6 flex items-center">
             <h1 className="text-2xl font-bold tracking-wide text-white drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]">
               APICOSU
@@ -24,8 +24,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </div>
         </header>
 
-        {/* MAIN CONTENT – Abstand unter Sticky Header */}
-        <main className="pt-24">
+        {/* MAIN CONTENT */}
+        <main className="pt-24 pb-24">
           {children}
         </main>
 

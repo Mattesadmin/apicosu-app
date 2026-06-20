@@ -3,10 +3,8 @@ import { modules } from "@/app/data/modules";
 
 export default function Home() {
   return (
-    <div className="max-w-[1400px] mx-auto px-12 py-24">
-
-      {/* Grid */}
-      <div className="grid grid-cols-3 gap-20">
+    <div className="max-w-[1400px] mx-auto px-12">
+      <div className="grid grid-cols-3 gap-16">
         {modules.map((m) => (
           <ModuleCard
             key={m.href}
@@ -17,7 +15,6 @@ export default function Home() {
           />
         ))}
       </div>
-
     </div>
   );
 }
