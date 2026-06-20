@@ -25,7 +25,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </header>
 
         {/* MAIN CONTENT */}
-        <main>
+        <main className="pt-32">
           {children}
         </main>
 
