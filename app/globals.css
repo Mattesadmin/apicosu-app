@@ -1,19 +1,52 @@
+/* -------------------------------------------------- */
+/* 1) Schriftart (Inter) – ganz oben, korrekt platziert */
+/* -------------------------------------------------- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
+/* -------------------------------------------------- */
+/* 2) Tailwind Layer – MUSS direkt nach dem Import stehen */
+/* -------------------------------------------------- */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Globaler Hintergrund + weiße Schrift */
+/* -------------------------------------------------- */
+/* 3) Globales Styling – minimal, sauber, stabil */
+/* -------------------------------------------------- */
+
+/* HTML + Body Grundstruktur */
 html, body {
-  background: #0A0A0A;
-  color: #FFFFFF;
   min-height: 100%;
   font-family: 'Inter', sans-serif;
-}
+  color: #FFFFFF;
 
-/* Bessere Kantenglättung */
-body {
+  /* Hintergrund NICHT setzen – das macht dein layout.tsx */
+  background: transparent;
+
+  /* Bessere Kantenglättung */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Entfernt Fokus-Ringe nur bei Maus, nicht bei Tastatur */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Scrollbar modernisieren (optional, aber schön) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
