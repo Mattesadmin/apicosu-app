@@ -3,7 +3,7 @@ import { modules } from "@/app/data/modules";
 
 export default function Home() {
   return (
-    <div className="max-w-[1400px] mx-auto px-12 pt-40 pb-32">
+    <div className="max-w-[1400px] mx-auto px-12 pt-40 pb-32 min-h-screen mt-16">
       {/* Abstand über dem Grid erzwingen */}
       <div className="grid grid-cols-3 gap-24 mt-8">
         {modules.map((m) => (
