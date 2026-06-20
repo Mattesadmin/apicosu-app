@@ -10,7 +10,6 @@ html, body {
   font-family: 'Inter', sans-serif;
   background: #0a0a0a;
   color: #e5e5e5;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -19,36 +18,29 @@ html, body {
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background: #0a0a0a;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
 
-/* -------------------------------------------------- */
-/* ANTI COLOR SHIFT RESET – entfernt ALLE Überlagerungen */
-/* -------------------------------------------------- */
-
+/* Anti Color Shift – sicher, ohne Build-Fehler */
 *,
 *::before,
 *::after {
-  mix-blend-mode: normal !important;
-  filter: none !important;
-  backdrop-filter: none !important;
+  mix-blend-mode: normal;
+  filter: none;
+  backdrop-filter: none;
 }
 
-/* Entfernt versehentliche globale SVG/Canvas Filter */
-html, body {
-  filter: none !important;
-  backdrop-filter: none !important;
-  mix-blend-mode: normal !important;
-}
-
-/* Entfernt Browser-Farbprofile, die Neon-Effekte erzeugen */
 img, svg {
-  color-profile: sRGB !important;
+  color-profile: sRGB;
 }
