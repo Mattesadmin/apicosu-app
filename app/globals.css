@@ -28,4 +28,27 @@ html, body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+
+/* -------------------------------------------------- */
+/* ANTI COLOR SHIFT RESET – entfernt ALLE Überlagerungen */
+/* -------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  mix-blend-mode: normal !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Entfernt versehentliche globale SVG/Canvas Filter */
+html, body {
+  filter: none !important;
+  backdrop-filter: none !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Entfernt Browser-Farbprofile, die Neon-Effekte erzeugen */
+img, svg {
+  color-profile: sRGB !important;
 }
