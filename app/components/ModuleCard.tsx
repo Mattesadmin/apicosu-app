@@ -29,36 +29,26 @@ export default function ModuleCard({
     <Link
       href={href}
       className={cn(
-        "group relative rounded-[2rem] p-10 m-4 h-[420px]",
+        "rounded-2xl p-8 h-[360px] bg-[#1a1a1a] border border-white/10",
         "flex flex-col items-center justify-center text-center",
-        "bg-gradient-to-br from-[#111] to-[#1a1a1a]",
-        "border border-white/10",
-        "shadow-[0_10px_40px_rgba(0,0,0,0.8)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.9)]",
-        "transition-all duration-300 hover:-translate-y-1 hover:scale-[1.04]",
-        "overflow-hidden no-underline",
+        "hover:bg-[#222] transition-all duration-200",
+        "shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:shadow-[0_6px_28px_rgba(0,0,0,0.5)]",
         className
       )}
     >
-      {/* Glare */}
-      <div className="absolute inset-0 rounded-[2rem] pointer-events-none bg-gradient-to-t from-transparent via-white/10 to-transparent opacity-20" />
-
-      {/* Kürzel */}
-      <div className="text-[9rem] font-extrabold text-white tracking-tight mb-6 drop-shadow-[0_0_25px_rgba(255,255,255,0.3)]">
+      <div className="text-6xl font-bold text-white mb-4">
         {short}
       </div>
 
-      {/* Icon */}
-      <div className="w-20 h-20 rounded-xl backdrop-blur-md bg-white/10 border border-white/20 flex items-center justify-center mb-6 shadow-[inset_0_0_25px_rgba(255,255,255,0.25)] hover:shadow-[inset_0_0_35px_rgba(255,255,255,0.35)] transition-all duration-300">
-        <Icon className="w-12 h-12 text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]" />
+      <div className="w-16 h-16 bg-[#2a2a2a] rounded-xl flex items-center justify-center mb-4 border border-white/10">
+        <Icon className="w-8 h-8 text-white" />
       </div>
 
-      {/* Titel */}
-      <h3 className="text-2xl font-semibold text-white mb-4 tracking-tight drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+      <h3 className="text-lg font-semibold mb-2">
         {title}
       </h3>
 
-      {/* Beschreibung */}
-      <p className="text-base text-gray-300 leading-relaxed max-w-[85%]">
+      <p className="text-sm text-gray-300 max-w-[80%]">
         {description}
       </p>
     </Link>
