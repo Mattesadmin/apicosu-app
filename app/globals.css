@@ -27,3 +27,8 @@ html, body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* Sanfter Übergang für Hover */
+* {
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
