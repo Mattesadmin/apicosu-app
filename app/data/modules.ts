@@ -10,7 +10,7 @@ import {
 export const modules = [
   {
     title: "Error Finder",
-    description: "Analysiert SAP-Fehlertexte und liefert präzise Lösungen.",
+    description: "Analysiert SAP-Fehlertexte.",
     href: "/error-finder",
     icon: BoltIcon
   },
